@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-
+get '/:username', to: 'users#show', as: :user
   devise_for :users
   get 'tags/:tag', to: 'pins#index', as: :tag
+
+  
+ 
   resources :pins do
     member do
       put "like", to: "pins#upvote"

@@ -19,7 +19,11 @@
 				</h2>
 				<p class="user">
 					Submitted By:
-					<%=pin.user.email%>
+					<% if pin.user.username %>
+						<%=link_to pin.user.username, user_path(pin.user.username)%>
+					<%else%>
+						<%=link_to pin.user.email, user_path(pin.user.username)%>
+					<%end%>
 				</p>
 			</div>
 		</div>
