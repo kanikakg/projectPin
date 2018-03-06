@@ -1,3 +1,14 @@
+<div class="container">
+  <ul class="nav nav-pills">
+ 
+
+	<% tag_cloud Pin.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+	 <li><button class="btn navbar-btn"><%= link_to tag.name, tag_path(tag.name), class: css_class %></button></li>
+	<% end %>
+	
+   </ul>
+</div>
+
 <div id ="pins" class="transitions-enabled">
 	<% @pins.each do |pin| %>
 		<div class="box">
