@@ -1,4 +1,9 @@
-<h3>@user.username</h3>
+<div>
+<%= image_tag @user.avatar.url(:medium) %>
+</div>
+
+<h2><%=@user.username%></h2>
+<h3><%=@user.bio%></h3>
 
 <div id ="pins" class="transitions-enabled">
 	<% @user.pins.each do |pin| %>
