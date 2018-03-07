@@ -8,27 +8,38 @@
 </head>
 <body>
 <nav class="navbar navbar-default"> 
-    <div class="container-fluid">
-    	<div class="navbar-brand"><%=link_to "Pin Board" ,root_path%>
-    	</div>
-
-    		
-    		<%if user_signed_in?%>
+  <div class="container-fluid">
+  <div class="navbar-brand">
+      <%= link_to root_url do %>
+       <%= image_tag "Pinterest.png" ,:size => "31x31" %>
+      <% end %> 
+  </div>
+    <%if user_signed_in?%>
     		<ul class="nav navbar-nav navbar-right">
-    			<li><%=link_to "New Pin",new_pin_path %></li>
-    			<li><%=link_to "Account",edit_user_registration_path %></li>
-    			<li><%=link_to "Sign Out",destroy_user_session_path, method: :delete%></li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> New <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                    <li><%=link_to "New Pin",new_pin_path %></li>
+                    <li><%=link_to "New Board",new_board_path %></li>
+                  
+                  </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> User <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                   <li><%=link_to "Edit Account",edit_user_registration_path %></li>
+                   <li><%=link_to "Sign Out",destroy_user_session_path, method: :delete%></li>
+                  </ul>
+              </li>		
+        			
     		</ul>
-    		<% else %>
-    		<ul class="nav navbar-nav navbar-right">
-    			<li><%=link_to "Sign Up",new_user_registration_path %></li>
-    			<li><%=link_to "Sign In",new_user_session_path%></li>
-    			</nav>
-    		</ul>
-    		<%end%>
-    	</div>
-    </div>
+  	<% else %>
+      		<ul class="nav navbar-nav navbar-right">
+      			<li><span class="glyphicon glyphicon-user"></span><%=link_to "Sign Up",new_user_registration_path %></li>
+      			<li><span class="glyphicon glyphicon-log-in"></span><%=link_to "Log In",new_user_session_path%></li>
+      		</ul>
+  	<%end%>
+  </div>
 </nav>
+
 <div class="container-fluid">
     <% flash.each do |name,msg| %>
        <%= content_tag :div, msg, class: "alert alert-info" %>

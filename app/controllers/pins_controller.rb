@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
     before_action :find_pin, only: [:show,:edit,:update,:destroy,:upvote]
-    # before_action :pin_auth, only: [:show,:edit, :update, :destroy,:upvote]
+    before_action :pin_auth, only: [:edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index,:show]
 
 	def index
@@ -56,7 +56,7 @@ class PinsController < ApplicationController
 	private 
 
 	def pin_params
-       params.require(:pin).permit(:title, :description, :image, :tag_list)
+       params.require(:pin).permit(:title, :description, :image, :tag_list, :board_id)
     end
 
     def pin_auth

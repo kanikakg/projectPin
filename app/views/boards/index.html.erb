@@ -1,0 +1,17 @@
+<h2>All Boards</h2>
+<%=link_to "New Board",new_board_path%>
+<%= @boards.each do |board| %>
+	<div>
+		<h3>
+			<%= board.name %></h3>
+			<% if @board.user==current_user %>
+				<button type="btn-btn default">
+					<%=link_to "Edit",edit_board_path(board)%>
+				</button>
+				<button type="btn-btn default">
+						<%=link_to "Delete",board, method: :delete , data: { confirm: "Are you sure?" }%>
+				</button>
+			<%end%>
+		
+	</div>
+<%end%>

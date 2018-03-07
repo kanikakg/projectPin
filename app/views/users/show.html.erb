@@ -1,32 +1,27 @@
+<header style="">
 <div>
 <%= image_tag @user.avatar.url(:medium) %>
 </div>
+<h2>Username: <%=@user.username%></h2>
+<h3>Bio: <%=@user.bio%></h3>
+</header>
 
-<h2><%=@user.username%></h2>
-<h3><%=@user.bio%></h3>
-
+<h3>My Boards</h3>
 <div id ="pins" class="transitions-enabled">
-	<% @user.pins.each do |pin| %>
+	<% @user.boards.each do |board| %>
 		<div class="box">
 			<div class="panel panel-default">
-				<%= link_to (image_tag pin.image.url),pin %>
+				Place image here
 				<h2>
-					<%=link_to pin.title,pin %>
+					<%=link_to board.name, board%>
 				</h2>
-				<p class="user">
-					Submitted By:
-					<% if pin.user.username %>
-						<%=link_to pin.user.username, user_path(pin.user.username)%>
-					<%else%>
-						<%=link_to pin.user.email, user_path(pin.user.username)%>
-					<%end%>
-				</p>
+				
 			</div>
 		</div>
 		<div class="panel-body">
 				
 			<%end%>
 		</div>
-	</div>
+</div>
 
 

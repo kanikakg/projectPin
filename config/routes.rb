@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
-get '/:username', to: 'users#show', as: :user
-  devise_for :users
+  
   get 'tags/:tag', to: 'pins#index', as: :tag
 
-  
- 
+  resources :boards
+
   resources :pins do
     member do
       put "like", to: "pins#upvote"
     end
   end
 
+  get '/:username', to: 'users#show', as: :user
 
+  devise_for :users
+  
   root "pins#index"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,23 +8,23 @@
 				<h1>
 					<%=@pin.title%>
 				</h1>
+				<h3>Posted in: <%=link_to @pin.board.name ,@pin.board %>
+					
+				</h3>
 				<p>
 					Tags: <%= raw @pin.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%>
 				</p>
 				<p class="description">
 					<%=@pin.description%>
 				</p>
+				<br>
 				Submitted By:
-				<%=@pin.user.email%>
+				<%=link_to @pin.user.username, user_path(@pin.user.username)%>
 				<br>
 			</div>
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-md-6 ">
-						<p class="user">
-							Submitted By:
-							<%=@pin.user.email%>
-						</p>
 						<div class="col-md-6 ">
 							<div class="btn-group pull-right">
 
@@ -38,7 +38,7 @@
 	
 								</button>
 
-								<% if user_signed_in? %>
+								<% if @pin.user==current_user %>
 									<button type="btn-btn default">
 										<%=link_to "Edit",edit_pin_path%>
 									</button>

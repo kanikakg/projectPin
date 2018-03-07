@@ -1,0 +1,36 @@
+<%=simple_form_for @board, remote: true,:html => {:multipart =>true} ,authenticity_token: true  do |f| %>
+
+    <% if @board.errors.any? %>
+	   
+		<div id ='errors'>
+		<h2>
+		<%=pluralize(@board.errors.count,"error")%>
+		prevented this board from saving
+
+		</h2>
+		<ul>
+		
+		<% @board.errors.full_messages.each  do |msg| %>
+		<li> <%=msg%> </li>
+		<%end%>
+		<%end%>
+	
+		</ul>
+		</div>
+   
+
+    <div class="form_group">
+	<%= f.input :name , input_html: {class: 'form-control'} %>
+	</div>
+	<br>
+
+	<%=f.button :submit, class: "btn btn-primary" %>
+	</div>
+    
+
+<%end%>
+
+
+
+
+
