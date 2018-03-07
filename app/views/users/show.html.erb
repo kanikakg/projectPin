@@ -38,7 +38,8 @@
 
 <h3>My Boards</h3>
 <div id ="pins" class="transitions-enabled">
-	<div class="box">
+	<% if @user==current_user %>
+		<div class="box">
 			<div class="panel panel-default">
 				<h2><button class="btn btn-lg">
 			          <span class="glyphicon glyphicon-plus">
@@ -50,6 +51,7 @@
 				
 			</div>
 		</div>
+	<%end%>
 	<% @user.boards.each do |board| %>
 		<div class="box">
 			<div class="panel panel-default">

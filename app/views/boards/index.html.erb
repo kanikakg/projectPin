@@ -1,17 +1,18 @@
-<h2>All Boards</h2>
-<%=link_to "New Board",new_board_path%>
-<%= @boards.each do |board| %>
-	<div>
-		<h3>
-			<%= board.name %></h3>
-			<% if @board.user==current_user %>
-				<button type="btn-btn default">
-					<%=link_to "Edit",edit_board_path(board)%>
-				</button>
-				<button type="btn-btn default">
-						<%=link_to "Delete",board, method: :delete , data: { confirm: "Are you sure?" }%>
-				</button>
+
+<div id ="pins" class="transitions-enabled">
+	<% @boards.each do |board| %>
+		<div class="box">
+			<div class="panel panel-default">
+				<h2>
+					<%=link_to board.name, board%>
+				</h2>
+
+				 <h5>By: <%= link_to board.user.username, user_path(board.user.username)%></h5>
+				
+			</div>
+		</div>
+		<div class="panel-body">
+				
 			<%end%>
-		
-	</div>
-<%end%>
+		</div>
+</div>

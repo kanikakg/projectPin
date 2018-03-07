@@ -17,7 +17,6 @@ class BoardsController < ApplicationController
 
 	def create
 		@board = current_user.boards.build(board_params)
-
 		if @board.save
 			redirect_to boards_path ,notice:"Successfully created"
 		else

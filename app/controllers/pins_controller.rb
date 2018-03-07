@@ -68,5 +68,4 @@ class PinsController < ApplicationController
     def find_pin
     	@pin=Pin.find(params[:id])
     end
-
 end
