@@ -11,7 +11,7 @@
   <div class="container-fluid">
   <div class="navbar-brand">
       <%= link_to root_url do %>
-       <%= image_tag "Pinterest.png" ,:size => "31x31" %>
+       <%= image_tag "Pinterest.png" ,:size => "32x32" %>
       <% end %> 
   </div>
     <%if user_signed_in?%>
@@ -33,8 +33,9 @@
     		</ul>
   	<% else %>
       		<ul class="nav navbar-nav navbar-right">
-      			<li><span class="glyphicon glyphicon-user"></span><%=link_to "Sign Up",new_user_registration_path %></li>
-      			<li><span class="glyphicon glyphicon-log-in"></span><%=link_to "Log In",new_user_session_path%></li>
+      			<li><button  class="btn btn-link"><span class="glyphicon glyphicon-user"></span><%=link_to " Sign Up",new_user_registration_path %></button></li>
+
+      			<li><button  class="btn btn-link"><span class="glyphicon glyphicon-log-in"></span><%=link_to " Log In",new_user_session_path%></button></li>
       		</ul>
   	<%end%>
   </div>

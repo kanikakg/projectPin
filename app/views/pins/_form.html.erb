@@ -1,4 +1,12 @@
-<%=simple_form_for @pin, remote: true,:html => {:multipart =>true} ,authenticity_token: true  do |f| %>
+	<head>
+		<style>
+		div.form_group{
+			margin: 15px;
+		}
+		</style>
+
+	</head>
+	<%=simple_form_for @pin, remote: true,:html => {:multipart =>true} ,authenticity_token: true  do |f| %>
 
     <% if @pin.errors.any? %>
 	   
@@ -45,11 +53,11 @@
 	<br>
 
 	<%=f.button :submit, class: "btn btn-primary" %>
+	<button class: "btn btn-primary" ><%= link_to "Cancel", root_path%></button>
 	</div>
     
 
 <%end%>
-
 
 
 
