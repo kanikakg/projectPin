@@ -24,7 +24,16 @@
 	<%= f.input :name , input_html: {class: 'form-control'} %>
 	<br>
 	</div>
-	<%=f.button :submit, class: "btn btn-primary" %><</button>
+
+	<div class="form_group">
+	<label for="product_category_id">Category:</label><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name%>
+	</div>
+
+	<br>
+	
+	<div >
+	<%=f.button :submit, class: "btn btn-primary" %></button>
 	</div>
     
 

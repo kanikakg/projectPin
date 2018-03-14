@@ -1,3 +1,6 @@
-
+<%if @pin.user.boards.nil? %>
+<%redirect_to new_board_path, notice: "Create a Board first"%>
+<%else%>
 <%=render 'form' %>
 <%= link_to "Cancel", root_path%>
+<%end%>

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
   get 'tags/:tag', to: 'pins#index', as: :tag
-
   resources :boards
-
+  resources :categories
+ 
   resources :pins do
     member do
       put "like", to: "pins#upvote"

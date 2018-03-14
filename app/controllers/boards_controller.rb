@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
     before_action :authenticate_user!, except: [:index,:show]
 
 	def index
-		@boards = Board.all
+			@boards = Board.all.order("created_at DESC")
 	end
 
 	def new
@@ -46,7 +46,7 @@ class BoardsController < ApplicationController
 	private 
 
 	def board_params
-       params.require(:board).permit(:name)
+       params.require(:board).permit(:name, :category_id)
     end
 
     def board_auth

@@ -1,0 +1,13 @@
+
+
+<div class="panel panel-default" style="margin-left: 130px; margin-right: 190px; padding-left: 15px;">
+
+<% @categories.each do |category| %>
+	
+		<h3>
+			<%=link_to category.name, category%>
+		</h3>	
+
+<%end%>
+		
+	</div>

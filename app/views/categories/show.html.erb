@@ -1,0 +1,25 @@
+
+
+<%boards = Board.where(category_id: params[:id])%>
+
+<h3><%=@category.name%></h3>
+<br>
+<div id ="pins" class="transitions-enabled">
+<% boards.each do |board|%>
+
+		<div class="box">
+			<div class="panel panel-default">
+				<h2>
+					<%=link_to board.name, board%>
+				</h2>
+
+				 <h5>By: <%= link_to board.user.username, user_path(board.user.username)%></h5>
+				
+			</div>
+		</div>
+		<div class="panel-body">
+				
+			<%end%>
+
+		</div>
+</div>

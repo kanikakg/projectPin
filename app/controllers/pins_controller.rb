@@ -7,7 +7,7 @@ class PinsController < ApplicationController
 		if params[:tag]
 			@pins = Pin.tagged_with(params[:tag])
 		else
-			@pins = Pin.all
+			@pins = Pin.all.order("created_at DESC")
 		end
 	end
 
