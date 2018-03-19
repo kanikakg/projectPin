@@ -52,7 +52,6 @@ class PinsController < ApplicationController
 	end
 
 
-
 	private 
 
 	def pin_params

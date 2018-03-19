@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'pins#index', as: :tag
   resources :boards
   resources :categories
- 
+  
+   get '/users' => 'users#users'
+   post '/follow' => 'users#follow'
+   post '/un_follow' => 'users#un_follow'
+
   resources :pins do
     member do
       put "like", to: "pins#upvote"
