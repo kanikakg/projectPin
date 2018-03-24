@@ -1,8 +1,17 @@
+<ul class="nav nav-tabs nav-justified">
+
+  <li class="active"><a href="/categories" style="margin-left: 130px;
+    padding-left: 15px;">Categories</a></li>
+    <li class="active"><a href="/boards">Boards</a></li>
+  <li class="active"><a href="/users" style="margin-right: 190px;">Users</a></li>
+</ul>
+<div class="panel panel-default" style="margin-left: 130px; margin-right: 190px; padding-left: 15px; padding-top: 20px;">
 
 <div id ="pins" class="transitions-enabled">
 	<% @boards.each do |board| %>
 		<div class="box">
 			<div class="panel panel-default">
+				<%= link_to (image_tag board.image.url.to_s),board %>
 				<h2>
 					<%=link_to board.name, board%>
 				</h2>
@@ -15,4 +24,5 @@
 				
 			<%end%>
 		</div>
+</div>
 </div>

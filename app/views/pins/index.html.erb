@@ -2,7 +2,7 @@
 <ul class="nav nav-pills">
 
 		<% tag_cloud Pin.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
-		<li><button class="btn navbar-btn" style=" margin-bottom: 5px; height: 40px; min-width: 40px; margin: 5px;">
+		<li><button class="btn navbar-btn" style=" margin-bottom: 5px; height: 40px; min-width: 40px; margin: 5px; background-color:rgba(187, 237, 207, 0.8);">
 
 		<%=link_to tag.name, tag_path(tag.name)%></button></li>
 		<% end %>
@@ -39,6 +39,14 @@
 
 
  <style>
+
+
+ 		div.button.btn.navbar-btn{
+ 			a{
+ 				color: black;
+ 		}
+ 	
+ }
  
 .affix {
   top: 0;
@@ -46,6 +54,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: rgba(0,0, 0, 0.5);
   z-index: 9999 !important;
+ 	a{ color: black;}
 }
 
 .affix + .container-fluid {

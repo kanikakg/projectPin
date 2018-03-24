@@ -11,7 +11,7 @@
   <div class="container-fluid">
   <div class="navbar-brand">
       <%= link_to root_url do %>
-       <%= image_tag "black1.png" ,:size => "40x40" %>
+       <%= image_tag "Pinterest.png" ,:size => "35x35" %>
       <% end %> 
   </div>
   <form class="navbar-form navbar-left" action="/action_page.php">
@@ -33,8 +33,8 @@
               </li>
               <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=current_user.username%><span class="caret"></span></a>
                    <ul class="dropdown-menu" style="background-color: #bbedcf;">
-                   <li><%=link_to "Edit Account",edit_user_registration_path %></li>
-                   <li><%=link_to "Sign Out",destroy_user_session_path, method: :delete%></li>
+                   <li><button  class="btn btn-link"><span class="glyphicon glyphicon-edit"></span><%=link_to "  Edit Account",edit_user_registration_path %></button></li>
+                   <li><button  class="btn btn-link"><span class="glyphicon glyphicon-log-out"></span><%=link_to "  Sign Out",destroy_user_session_path, method: :delete%></button></li>
                   </ul>
               </li>		
         			

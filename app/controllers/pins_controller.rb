@@ -16,6 +16,7 @@ class PinsController < ApplicationController
 	end
  
 	def show 
+		@reviews = Review.where(pin_id: @pin)
 	end
 
 

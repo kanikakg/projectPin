@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       put "like", to: "pins#upvote"
     end
+    resources :reviews, except: [:index, :show]
   end
 
   get '/:username', to: 'users#show', as: :user

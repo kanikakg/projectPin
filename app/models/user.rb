@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :pins 
   has_many :boards
+  has_many :reviews
   validates_uniqueness_of :username
 
   has_attached_file :avatar, styles:  { medium: "100x100>", thumb: "100x100"}, default_url: "/images/:style/missing.png"

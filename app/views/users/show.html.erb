@@ -10,7 +10,7 @@
 
 <div class="container" style="margin-top: 7px; margin-bottom: 10px;">
 <!--  <div class="container" style="margin-top: 7px; margin-bottom: 10px;">
- -->	<div class="row panel" id="userPanel" style="padding-bottom: 10px;     background-color: #0F2630;">
+ -->	<div class="row panel" id="userPanel" style="padding-bottom: 10px;     background-color: #41AE9F; border-bottom-left-radius: 40px; border-top-right-radius: 40px; ">
 		<!-- <div class="col-md-4 bg_blur ">
     	    <a href="#" class="follow_btn hidden-xs">Follow</a>
 		</div> -->
@@ -23,14 +23,13 @@
                 <h4><%=@user.email%></h4>
                 <span><%=@user.bio%></span>
                 <br>
+                <br>
 				<% if current_user.can_follow @user.id %> 
-				<%= link_to "Follow", url_for(controller: :users, action: :follow, followee_id: @user.id), method: :post %>
+				<button  type="button" class="btn btn-warning"><%= link_to "Follow", url_for(controller: :users, action: :follow, followee_id: @user.id), method: :post %></button>
 				<% end %>
 
 				<% if current_user.can_un_follow @user.id %> 
-				"UnFollow" 
-				<br>
-
+				<button  type="button" class="btn btn-warning"><%= link_to "UnFollow", url_for(controller: :users, action: :un_follow, followee_id: @user.id), method: :post %></button>
 				<% end %>
            </div>
         </div>
@@ -65,7 +64,7 @@
 	<% @user.boards.each do |board| %>
 		<div class="box">
 			<div class="panel panel-default">
-				Place image here
+				<%= link_to (image_tag board.image.url.to_s),board %>
 				<h2>
 					<%=link_to board.name, board%>
 				</h2>
