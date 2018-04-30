@@ -1,0 +1,70 @@
+<div class="container" style="margin-right: 50px; margin-left: 50px; padding: 5px; "  data-spy="affix" data-offset-top="205">
+<ul class="nav nav-pills">
+
+		<% tag_cloud Pin.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+		<li><button class="btn navbar-btn" style=" margin-bottom: 5px; height: 40px; min-width: 40px; margin: 5px; background-color:rgba(187, 237, 207, 0.8);">
+
+		<%=link_to tag.name, tag_path(tag.name)%></button></li>
+		<% end %>
+	
+   </ul>
+
+</div> 
+
+<div id ="pins" class="transitions-enabled">
+	<% @pins.each do |pin| %>
+		<div class="box">
+			<div class="panel panel-default">
+				<%= link_to (image_tag pin.image.url),pin %>
+				<h2>
+					<%=link_to pin.title,pin %>	</h2>
+
+					<h5>Posted in: <%=link_to pin.board.name ,pin.board %>
+					
+				</h5>
+
+				<p class="user">
+					Submitted By:
+					
+						<%=link_to pin.user.username, user_path(pin.user.username)%>
+					
+				</p>
+			</div>
+		</div>
+		<div class="panel-body">
+				
+			<%end%>
+		</div>
+		<div id="infinite-scrolling">
+			<%= will_paginate @pins %>
+
+		</div>
+
+
+	</div>
+
+
+ <style>
+
+
+ 		div.button.btn.navbar-btn{
+ 			a{
+ 				color: black;
+ 		}
+ 	
+ }
+ 
+.affix {
+  top: 0;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgba(0,0, 0, 0.5);
+  z-index: 9999 !important;
+ 	a{ color: black;}
+}
+
+.affix + .container-fluid {
+  padding-top: 70px;
+}
+  </style>
+

@@ -1,0 +1,50 @@
+
+<%=simple_form_for @board, remote: true,:html => {:multipart =>true} ,authenticity_token: true  do |f| %>
+
+    <% if @board.errors.any? %>
+	   
+		<div id ='errors'>
+		<h2>
+		<%=pluralize(@board.errors.count,"error")%>
+		prevented this board from saving
+
+		</h2>
+		<ul>
+		
+		<% @board.errors.full_messages.each  do |msg| %>
+		<li> <%=msg%> </li>
+		<%end%>
+		<%end%>
+	
+		</ul>
+		</div>
+   
+
+    <div class="form_group">
+	<%= f.input :name , input_html: {class: 'form-control'} %>
+	<br>
+	</div>
+	
+	<div class= "form_group">
+	<label>Add Cover</label>   *(gif format only)
+	<%= f.file_field :image%>
+		
+	</div>
+	<br>
+	<div class="form_group">
+	<label for="product_category_id">Category:</label><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name%>
+	</div>
+
+	<br>
+	
+	<div >
+	<%=f.button :submit, class: "btn btn-primary" %></button>
+	</div>
+    
+
+<%end%>
+
+
+
+

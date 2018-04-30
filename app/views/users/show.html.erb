@@ -1,0 +1,99 @@
+<!-- <head>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head> -->
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<div class="container" style="margin-top: 7px; margin-bottom: 10px;">
+<!--  <div class="container" style="margin-top: 7px; margin-bottom: 10px;">
+ -->	<div class="row panel" id="userPanel" style="padding-bottom: 10px;     background-color: #41AE9F; border-bottom-left-radius: 40px; border-top-right-radius: 40px; box-shadow: 0 5px 5px darkgrey;">
+		<!-- <div class="col-md-4 bg_blur ">
+    	    <a href="#" class="follow_btn hidden-xs">Follow</a>
+		</div> -->
+        <div class="col-md-8  col-xs-12" style="margin: 4px;">
+
+           <%= image_tag @user.avatar.url(), class: "img-thumbnail picture hidden-xs" %>
+           <%= image_tag @user.avatar.url(), class: "img-thumbnail visible-xs picture_mob"%>
+           <div class="header" style="color: white">
+                <h1><%=@user.username%></h1>
+                <h4><%=@user.email%></h4>
+                <span><%=@user.bio%></span>
+                <br>
+                <br>
+				<% if current_user.can_follow @user.id %> 
+				<button  type="button" class="btn btn-warning"><%= link_to "Follow", url_for(controller: :users, action: :follow, followee_id: @user.id), method: :post %></button>
+				<% end %>
+
+				<% if current_user.can_un_follow @user.id %> 
+				<button  type="button" class="btn btn-warning"><%= link_to "UnFollow", url_for(controller: :users, action: :un_follow, followee_id: @user.id), method: :post %></button>
+				<% end %>
+           </div>
+        </div>
+    </div>   
+    
+	<!-- <div class="row nav">    
+        <div class="col-md-4"></div>
+        <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> 16</div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa-heart-o fa-lg"></i> 14</div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
+        </div>
+    </div> --> 
+</div>
+
+
+<div id ="pins" class="transitions-enabled">
+	<% if @user==current_user %>
+		<div class="box">
+			<div class="panel panel-default">
+				<h2><button class="btn btn-lg">
+			          <span class="glyphicon glyphicon-plus">
+			          	
+			          </span><%=link_to " New Board" , new_board_path%>
+			        </button>
+					
+				</h2>
+				
+			</div>
+		</div>
+	<%end%>
+	<% @user.boards.each do |board| %>
+		<div class="box">
+			<div class="panel panel-default">
+				<%= link_to (image_tag board.image.url.to_s),board %>
+				<h2>
+					<%=link_to board.name, board%>
+				</h2>
+				
+			</div>
+		</div>
+		<div class="panel-body">
+				
+			<%end%>
+		</div>
+</div>
+<style type="text/css">
+head body{
+	div.container{
+		div#userPanel{
+			div.col-md-8.col-xs-12{
+				img.img-thumbnail.picture.hidden-xs {
+				    height: 150px;
+				    width: 150px;
+				    position: absolute;
+				    padding: 4px; 
+				    top: 3px;
+				    bottom: 3px;
+				    left: 10px;
+				}
+
+			}
+		}
+	}
+
+}
+</style>

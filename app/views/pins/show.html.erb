@@ -1,0 +1,270 @@
+<header>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</header>
+
+
+<div id="pin_show" class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+			<div class="panel-heading pin_image">
+				<%=image_tag @pin.image.url()%>
+			</div>
+			<div class="panel-body">
+				<h1>
+					<%=@pin.title%>
+				</h1>
+				<h3>Posted in: <%=link_to @pin.board.name ,@pin.board %>
+					
+				</h3>
+				<p>
+					Tags: <%= raw @pin.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%>
+				</p>
+				<p class="description">
+					<%=@pin.description%>
+				</p>
+				<br>
+				Submitted By:
+				<%=link_to @pin.user.username, user_path(@pin.user.username)%>
+				<br>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-6 ">
+						<div class="col-md-6 ">
+							<div class="btn-group pull-right">
+
+								<button type="btn-btn default">
+									<%=link_to like_pin_path(@pin),method: :put  do%>
+										<span class="glyphicon glyphicon-heart">
+											<%=@pin.get_upvotes.size%>
+										<%end%>
+										
+									</span>
+	
+								</button>
+
+								<% if @pin.user==current_user %>
+									<button class="btn-btn default">
+										<%=link_to "Edit",edit_pin_path%>
+									</button>
+									<button type="btn-btn default">
+											<%=link_to "Delete",pin_path, method: :delete , data: { confirm: "Are you sure?" }%>
+										</button>
+								<%end%>
+									
+								</div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+
+<div class="panel-body">
+<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show Comments</button>
+  <div id="demo" class="collapse">
+	 <div class="page-header">
+        <h3 class="reviews">Tried this? Care to share?<%= link_to "Add Review", new_pin_review_path(@pin), class: "btn btn-small btn-realto"%></h3>
+        
+    </div>
+				
+
+<div class="comment-tabs">
+	<ul class="nav nav-tabs" role="tablist">
+	    <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Reviews</h4></a></li>
+	    <!--  <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li> -->
+	   
+	</ul>   
+	<% @reviews.each do |review|%>         
+	<div class="tab-content">
+    <div class="tab-pane active" id="comments-logout">                
+        <ul class="media-list">
+          <li class="media">
+            <a class="pull-left" href="#">
+            <img class="media-object img-circle" alt="profile" width="150" height="128" <%= image_tag review.user.avatar.url()%>
+                        
+            </a>
+            <div class="media-body">
+              <div class="well well-lg">
+                  <h4 class="media-heading text-uppercase reviews"><%=link_to review.user.username, user_path(review.user.username)%></h4>
+                  <!-- <ul class="media-date text-uppercase reviews list-inline">
+                    <li class="dd"><%=review.created_at%></li>
+                  </ul> -->
+                  <p class="media-comment">
+                   <%=review.comment%>
+                  </p>
+                  <!-- <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                  <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span> 2 comments</a> -->
+              </div>              
+            </div>
+           
+          </li>     
+          </ul>
+          </div>
+          </div>
+          	<%end%>
+          </div> 
+
+      	
+
+</div>
+
+
+
+</div>
+<div class="panel-body">
+
+
+<div id ="pins" class="transitions-enabled">
+    <% @pins.each do |pin| %>
+        <div class="box">
+            <div class="panel panel-default">
+                <%= link_to (image_tag pin.image.url),pin %>
+                <h2>
+                    <%=link_to pin.title,pin %> </h2>
+
+                    <h5>Posted in: <%=link_to pin.board.name ,pin.board %>
+                    
+                </h5>
+
+                <p class="user">
+                    Submitted By:
+                    
+                        <%=link_to pin.user.username, user_path(pin.user.username)%>
+                    
+                </p>
+            </div>
+        </div>
+        <div class="panel-body">
+                
+            <%end%>
+        </div>
+    </div>
+
+</div>
+			
+</div>
+</div>
+
+</div>
+
+
+
+<style>
+	/*
+    Image credits:
+    uifaces.com (http://uifaces.com/authorized)
+*/
+
+body {
+	background: #F5FFEA;
+}
+
+.container-fluid{
+background-color: white;
+}
+#login { display: none; }
+.login,
+.logout { 
+    position: absolute; 
+    top: -3px;
+    right: 0;
+}
+.page-header { position: relative; }
+.reviews {
+    color: #555;    
+    font-weight: bold;
+    margin: 10px auto 20px;
+}
+.notes {
+    color: #999;
+    font-size: 12px;
+}
+.media .media-object { max-width: 120px; }
+.media-body { position: relative; }
+.media-date { 
+    position: absolute; 
+    right: 25px;
+    top: 25px;
+}
+
+
+	.well:hover
+	{margin-top: 0px;
+    background-color: aliceblue;
+    border: 2px solid #0077b200;
+    text-align: center;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 15px;
+    border-radius: 0px !important;
+    border-bottom: 2px solid rgba(97, 203, 255, 0.65);
+}
+.media-date li { padding: 0; }
+.media-date li:first-child:before { content: ''; }
+.media-date li:before { 
+    content: '.'; 
+    margin-left: -2px; 
+    margin-right: 2px;
+}
+.media-comment { margin-bottom: 20px; font-size: 20px;
+    color: dimgray;
+    font-family: -webkit-body;
+}}
+.media-replied { margin: 0 0 20px 50px; }
+.media-replied .media-heading { padding-left: 6px; }
+
+.btn-circle {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+.btn-circle span { padding-right: 6px; }
+.embed-responsive { margin-bottom: 20px; }
+.tab-content {
+    padding: 50px 15px;
+    border: 1px solid #ddd;
+    border-top: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.custom-input-file {
+    overflow: hidden;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: #eee url('https://s3.amazonaws.com/uifaces/faces/twitter/walterstephanie/128.jpg');    
+    background-size: 120px;
+    border-radius: 120px;
+}
+input[type="file"]{
+    z-index: 999;
+    line-height: 0;
+    font-size: 0;
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0);-ms-filter: "alpha(opacity=0)";
+    margin: 0;
+    padding:0;
+    left:0;
+}
+.uploadPhoto {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: none;
+    width: 50%;
+    height: 50%;
+    color: #fff;    
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;    
+    background-color: rgba(0,0,0,.3);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.custom-input-file:hover .uploadPhoto { display: block; }
+</style>
