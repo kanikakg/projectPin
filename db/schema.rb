@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180328195930) do
-=======
-ActiveRecord::Schema.define(version: 20180324202340) do
->>>>>>> origin/master
 
   create_table "boards", force: :cascade do |t|
     t.string   "name"
@@ -109,11 +105,8 @@ ActiveRecord::Schema.define(version: 20180324202340) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-<<<<<<< HEAD
     t.string   "provider"
     t.string   "uid"
-=======
->>>>>>> origin/master
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

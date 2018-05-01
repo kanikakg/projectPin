@@ -1,9 +1,5 @@
 class HomeController < ApplicationController
-<<<<<<< HEAD
 	before_action :authenticate_user! 
-=======
-	before_action :authenticate_user! 	
->>>>>>> origin/master
 
   def users
   	@users = User.all
