@@ -7,8 +7,12 @@ class PinsController < ApplicationController
 		if params[:tag]
 			@pins = Pin.tagged_with(params[:tag])
 		else
+<<<<<<< HEAD
 			@pins = Pin.paginate(:page => params[:page], :per_page => 5).order("created_at DESC")
 			
+=======
+			@pins = Pin.all.order("created_at DESC")
+>>>>>>> origin/master
 		end
 	end
 
@@ -18,8 +22,11 @@ class PinsController < ApplicationController
  
 	def show 
 		@reviews = Review.where(pin_id: @pin)
+<<<<<<< HEAD
 		@pins =Pin.tagged_with(params[@pin.tags])
 		# boards = Board.where(category_id: params[:id])
+=======
+>>>>>>> origin/master
 	end
 
 

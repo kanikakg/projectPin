@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+<<<<<<< HEAD
   devise :omniauthable, omniauth_providers: %i[facebook]
+=======
+>>>>>>> origin/master
   has_many :pins 
   has_many :boards
   has_many :reviews
@@ -12,12 +15,15 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles:  { medium: "100x100>", thumb: "100x100"}, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+<<<<<<< HEAD
   def feed
     users = followee_ids
     users << id
     Pin.where(user_id: users).order(created_at: :desc)
   end
 
+=======
+>>>>>>> origin/master
 
   def follow_relation user_id
 	  	return UserRelations::SELF if id == user_id
@@ -40,6 +46,7 @@ class User < ActiveRecord::Base
      FollowMapping.where(follower_id: id).pluck(:followee_id)
     end
 
+<<<<<<< HEAD
     def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.email = auth.info.email
@@ -61,6 +68,8 @@ class User < ActiveRecord::Base
   end
 
 
+=======
+>>>>>>> origin/master
    class UserRelations
   	SELF = 0
   	FOLLOWED = 1

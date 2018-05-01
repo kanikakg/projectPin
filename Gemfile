@@ -31,9 +31,12 @@ gem 'paperclip', '~> 5.1'
 gem 'carrierwave', '~> 1.0'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'acts_as_votable', '~> 0.10.0'
+<<<<<<< HEAD
 gem 'therubyracer'
 gem 'will_paginate', '~> 3.1.0'
 gem 'omniauth-facebook'
+=======
+>>>>>>> origin/master
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
